@@ -2,6 +2,7 @@
   src: url(fonts/Pixelfy-font.ttf);
   font-family: pixelfy;
 }  
+
 body {
     padding: 0;
     margin: 0;
@@ -45,8 +46,8 @@ body {
 
   #game-end {
     display: none;
-    background-image: url("/src/");
   }
+  
   .game-intro p {
     font-size: 18px;
     font-family: "Verdana";

@@ -8,15 +8,23 @@
     <title>Space Race</title>
   </head>
   <body>
+    <audio id="song">
+      <source src = "cajun fries.mp3">
+    </audio>
+    <script>
+      window.addEventListener('click', () => {
+      document.getElementById ("song").play();
+      })
+    </script>
     <main>
       <!-- initially shown -->
       <div id="game-intro">
         <img style="padding-top: 15em;" src="/src/spaceship.png" alt="spaceship" class="spaceship-img" />
         <br/>
         <button id="start-button">Start Game</button>
-        <p style="color: white; padding-top: 2.5em;">Use your "up", "right", and "left" arrows on your keyboard to avoid the asteroids!</p>
-        <p style="color: white; padding-top: 2.5em;">tip: No "down" arrow as the only way is forward!</p>
-        <img src="/src/up-down-arrow copy.png" alt="" class="arrows-img" />
+        <p style="color: white; font-size: 20px; padding-top: 1.5em; word-spacing: 5px; letter-spacing: 4px;">Use your "up", "right", and "left" arrows on your keyboard to avoid the asteroids and "other" obstacles!</p>
+        <p style="color: white; font-size: 20px; padding-top: 1.2em; word-spacing: 5px; letter-spacing: 4px;">tip: No "down" arrow as the only way is forward!</p>
+        <img style="padding-top: 2.5em;" src="/src/up-down-arrow copy.png" alt="" class="arrows-img" />
       </div>
 
     <!-- display: none -->
@@ -31,10 +39,10 @@
 
     <!-- display: none -->
       <div id="game-end">
-        <img src="/src/game over.png">
+        <img style="padding-top: 5em; padding-bottom: 1em; width: 700px;" src="/src/game over.png" alt="gameOver" class="gameOver-img" />
         <h1></h1>
         <br/>
-        <p style="margin-top: 0; margin-bottom: 0; left: 10; color: black; font-size: 40px;">Score: <span id="score2"> 0 </span></p>
+        <p style="margin-top: .5em; padding-top: 0; margin-bottom: 0; left: 10; color: black; font-size: 40px;">Score: <span id="score2"> 0 </span></p>
         <button id="restart-button">Restart</button>
       </div>
     </main>

@@ -22,6 +22,7 @@ class Game {
       this.livesElement = document.getElementById ('lives');
       this.gameIsOver = false;
       this.animationId = null;
+      this.gameIsWon = false;
     }
 
     start () {
@@ -41,13 +42,13 @@ class Game {
     
         this.update ();
 
-        if (this.player.top <= 100) {
+        if (this.player.top <= 60) {
             this.score++;
             this.scoreElement.textContent = this.score;
             this.player.element.remove();           
             this.resetGame();
         }
-
+        
         this.animationId = window.requestAnimationFrame(() => this.gameLoop());
     }
     update () { 
@@ -89,6 +90,12 @@ class Game {
             }
         }
 
+        if (this.score >= 10) {
+            for (let i = 0; i < this.obstacles.length; i++) {
+                this.obstacles[i].speed = 22.5;
+            }
+        }
+
         if (this.lives === 0) {
             this.gameOver();
         }
@@ -101,7 +108,7 @@ class Game {
             this.obstacles.push (new Obstacle (this.gameScreen));
         }
 
-        if (this.animationId % 100 === 2 && this.score >= 5) {
+        if (this.animationId % 100 === 2 && this.score >= 7) {
             this.obstacles.push (new Obstacle (this.gameScreen));
         }
     }
@@ -115,6 +122,7 @@ class Game {
        
         this.scoreElement2.innerText = this.score;
     }
+    
     
     resetGame () {
         this.player = new Player (
