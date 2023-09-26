@@ -72,6 +72,12 @@ class Game {
             }
         }
 
+        if (this.score >= 3) {
+            for (let i = 0; i < this.obstacles.length; i++) {
+                this.obstacles[i].speed = 8.5;
+            }
+        }
+
         if (this.lives === 0) {
             this.gameOver();
         }

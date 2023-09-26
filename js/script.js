@@ -39,7 +39,7 @@ window.onload = function () {
       if (possibleKeystrokes.includes(key)) {
         event.preventDefault();
 
-        const moveDistance = 2;
+        const moveDistance = 3;
 
         game.player.directionX = 0;
         game.player.directionY = 0;
