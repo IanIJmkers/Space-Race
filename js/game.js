@@ -12,13 +12,18 @@ class Game {
         150,
         "/src/spaceship.png"
       );
-      this.height = 1600;
-      this.width = 1500;
+      this.height = 950;
+      this.width = 2500;
       this.obstacles = [];
       this.score = 0;
+      this.scoreElement = document.getElementById ('score');
+      this.scoreElement2 = document.getElementById ('score2');
       this.lives = 1;
+      this.livesElement = document.getElementById ('lives');
       this.gameIsOver = false;
+      this.animationId = null;
     }
+
     start () {
         this.startScreen.style.display = "none";
         this.gameScreen.style.display = "block"; 
@@ -29,13 +34,21 @@ class Game {
         this.gameLoop();
     }
     gameLoop() {
-        console.log ("in the game loop");
+    
         if (this.gameIsOver){
             return;
         }
+    
         this.update ();
 
-        window.requestAnimationFrame(() => this.gameLoop());
+        if (this.player.top <= 100) {
+            this.score++;
+            this.scoreElement.textContent = this.score;
+            this.player.element.remove();           
+            this.resetGame();
+        }
+
+        this.animationId = window.requestAnimationFrame(() => this.gameLoop());
     }
     update () { 
         this.player.move();
@@ -48,6 +61,7 @@ class Game {
                 obstacle.element.remove();
                 this.obstacles.splice(i, 1);
                 this.lives--;
+                this.livesElement.innerText = this.lives;
                 i--;
             }
             else if (obstacle.width > this.width) {
@@ -59,23 +73,36 @@ class Game {
         }
 
         if (this.lives === 0) {
-            this.endGame();
+            this.gameOver();
         }
 
-        if (Math.random() > 0.98 && this.obstacles.length < 1) {
+        if (this.animationId % 100 === 0) {
             this.obstacles.push (new Obstacle (this.gameScreen));
         }
     }
 
-    endGame() {
+    gameOver() {
         this.player.element.remove();
-        this.obstacles.forEach(function (obstacle) {
-            obstacle.element.remove();
-        });
 
-        this.gameIsOver = true;
 
         this.gameScreen.style.display = "none";
         this.gameEndScreen.style.display = "block";
+       
+        this.scoreElement2.innerText = this.score;
+    }
+    
+    resetGame () {
+        this.player = new Player (
+            this.gameScreen,
+            200,
+            500,
+            100,
+            150,
+            "/src/spaceship.png"
+          );
+        this.player.element.style.top = `${this.player.top}px`;
+        this.lives = 1;
+        this.livesElement.textContent = this.lives;
+     
     }
 }

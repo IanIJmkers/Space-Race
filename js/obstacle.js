@@ -1,10 +1,17 @@
 class Obstacle {
     constructor(gameScreen) {
       this.gameScreen = gameScreen;
-      this.left = Math.floor(Math.random() * 200 + 70);
-      this.top = 0;
-      this.width = 100;
-      this.height = 100;
+      this.pos = Math.floor(Math.random() * 2);
+      if(this.pos == 1){
+        this.left = -300;
+      } else {
+        this.left = 1900;
+      }
+  
+      this.top = Math.random() * 750;
+      this.width = 40;
+      this.height = 40;
+      this.stoppingPoint = this.gameScreen.width;
       this.element = document.createElement("img");
   
       this.element.src = "/src/asteroid.png";
@@ -13,8 +20,9 @@ class Obstacle {
       this.element.style.height = `${this.height}px`;
       this.element.style.left = `${this.left}px`;
       this.element.style.top = `${this.top}px`;
-  
+
       this.gameScreen.appendChild(this.element);
+      this.updatePosition ();
     }
   
     updatePosition() {
@@ -22,11 +30,26 @@ class Obstacle {
       this.element.style.left = `${this.left}px`;
       this.element.style.top = `${this.top}px`;
     }
-  
+    
     move() {
-      // Move the obstacle down by 3px
-      this.left += 3;
+      // speed of obstacle
+      if (this.pos == 1){
+        this.left += 5.5;
+        // Update the obstacle's position on the screen
+        this.updatePosition();
+        
+        if (this.left >= this.gameScreen.width) {
+          this.element.remove();
+        }
+      } else {
+        this.left -= 5.5;
       // Update the obstacle's position on the screen
       this.updatePosition();
+      
+      if (this.left <= -300) {
+        this.element.remove();
+      }
+      }
+      
     }
   }

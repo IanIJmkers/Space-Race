@@ -11,29 +11,30 @@
     <main>
       <!-- initially shown -->
       <div id="game-intro">
-        <img src="/src/spaceship.png" alt="spaceship" class="spaceship-img" />
+        <img style="padding-top: 15em;" src="/src/spaceship.png" alt="spaceship" class="spaceship-img" />
         <br/>
         <button id="start-button">Start Game</button>
-        <p style="color: white; padding-top: 2.5em;">Use your "up" and "down" arrows on your keyboard to avoid the asteroids and "other" unexpected obstacles!</p>
+        <p style="color: white; padding-top: 2.5em;">Use your "up", "right", and "left" arrows on your keyboard to avoid the asteroids!</p>
+        <p style="color: white; padding-top: 2.5em;">tip: No "down" arrow as the only way is forward!</p>
         <img src="/src/up-down-arrow copy.png" alt="" class="arrows-img" />
       </div>
 
     <!-- display: none -->
       <div id="game-screen">
         <div>
-        <img src="/src/spaceship.png" alt="spaceship" class="spaceship-img" />
-        <br/>
           <h2>Stats</h2>
-          <p>Score: <span id="score">0</span></p>
-          <p>Lives: <span id="lives">3</span></p>
+          <p style="margin-top: 0; margin-bottom: 0; left: 10; color: white; font-size: 40px; margin-left: 35px;">Score: <span id="score">0</span></p>
+          <p style="margin-top: 0; left: 10; color: white; font-size: 40px; margin-left: 35px;">Lives: <span id="lives">1</span></p>
         </div>
+      </div>
 
 
     <!-- display: none -->
       <div id="game-end">
-        <img src="./images/logo.png" alt="" class="logo-img" />
-        <h1>Game Over</h1>
+        <img src="/src/game over.png">
+        <h1></h1>
         <br/>
+        <p style="margin-top: 0; margin-bottom: 0; left: 10; color: black; font-size: 40px;">Score: <span id="score2"> 0 </span></p>
         <button id="restart-button">Restart</button>
       </div>
     </main>
