@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <title>Space Race</title>
+  </head>
+  <body>
+    <main>
+      <!-- initially shown -->
+      <div id="game-intro">
+        <img style="padding-top: 15em;" src="/src/spaceship.png" alt="spaceship" class="spaceship-img" />
+        <br/>
+        <button id="start-button">Start Game</button>
+        <p style="color: white; padding-top: 2.5em;">Use your "up", "right", and "left" arrows on your keyboard to avoid the asteroids!</p>
+        <p style="color: white; padding-top: 2.5em;">tip: No "down" arrow as the only way is forward!</p>
+        <img src="/src/up-down-arrow copy.png" alt="" class="arrows-img" />
+      </div>
+
+    <!-- display: none -->
+      <div id="game-screen">
+        <div>
+          <h2>Stats</h2>
+          <p style="margin-top: 0; margin-bottom: 0; left: 10; color: white; font-size: 40px; margin-left: 35px;">Score: <span id="score">0</span></p>
+          <p style="margin-top: 0; left: 10; color: white; font-size: 40px; margin-left: 35px;">Lives: <span id="lives">1</span></p>
+        </div>
+      </div>
+
+
+    <!-- display: none -->
+      <div id="game-end">
+        <img src="/src/game over.png">
+        <h1></h1>
+        <br/>
+        <p style="margin-top: 0; margin-bottom: 0; left: 10; color: black; font-size: 40px;">Score: <span id="score2"> 0 </span></p>
+        <button id="restart-button">Restart</button>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="js/obstacle.js"></script>
+    <script type="text/javascript" src="js/player.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>
