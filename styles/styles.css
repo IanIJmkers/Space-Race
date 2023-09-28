@@ -47,6 +47,10 @@ body {
   #game-end {
     display: none;
   }
+
+  #game-win {
+    display: none;
+  }
   
   .game-intro p {
     font-size: 18px;

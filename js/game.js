@@ -4,6 +4,7 @@ class Game {
       this.startScreen = document.querySelector("#game-intro");
       this.gameScreen = document.querySelector("#game-screen");
       this.gameEndScreen = document.querySelector("#game-end");
+      this.gameWonScreen = document.querySelector("#game-win");
       this.player = new Player (
         this.gameScreen,
         200,
@@ -42,7 +43,7 @@ class Game {
     
         this.update ();
 
-        if (this.player.top <= 60) {
+        if (this.player.top <= 750) {
             this.score++;
             this.scoreElement.textContent = this.score;
             this.player.element.remove();           
@@ -96,6 +97,10 @@ class Game {
             }
         }
 
+        if (this.score == 20) {
+            this.gameWin();
+        }
+
         if (this.lives === 0) {
             this.gameOver();
         }
@@ -111,6 +116,8 @@ class Game {
         if (this.animationId % 100 === 2 && this.score >= 7) {
             this.obstacles.push (new Obstacle (this.gameScreen));
         }
+
+        
     }
 
     gameOver() {
@@ -121,8 +128,20 @@ class Game {
         this.gameEndScreen.style.display = "block";
        
         this.scoreElement2.innerText = this.score;
+        
     }
-    
+
+    gameWin() {
+        this.player.element.remove();
+
+
+        this.gameScreen.style.display = "none";
+        this.gameEndScreen.style.display = "block";
+       
+        this.scoreElement2.innerText = this.score;
+        
+    }
+
     
     resetGame () {
         this.player = new Player (

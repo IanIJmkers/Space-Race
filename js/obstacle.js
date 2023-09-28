@@ -2,6 +2,7 @@ class Obstacle {
     constructor(gameScreen) {
       this.gameScreen = gameScreen;
       this.pos = Math.floor(Math.random() * 2);
+      // floor of randomized number between 0-1 * 2 
       this.img = Math.floor(Math.random() * 2);
 
       this.top = Math.random() * 750;
@@ -10,11 +11,13 @@ class Obstacle {
       this.speed = 5.5;
       
       this.element = document.createElement("img");
+      // use random value to decide origin point
       if(this.pos == 1){
         this.left = -300;
       } else {
         this.left = 1900;
       }
+      // use random value to decide content of img
       if (this.img == 1) {
         this.element.src = "/src/asteroid.png";
       } else {
@@ -38,16 +41,18 @@ class Obstacle {
     }
     
     move() {
-      // speed of obstacle
+      // 
       if (this.pos == 1){
+        // Moves object (left - right)
         this.left += this.speed;
-        // Update the obstacle's position on the screen
+        // Update the obstacle's position 
         this.updatePosition();
         
         if (this.left >= this.gameScreen.width) {
           this.element.remove();
         }
       } else {
+        // moves object (right - left)
         this.left -= this.speed;
       // Update the obstacle's position on the screen
       this.updatePosition();
