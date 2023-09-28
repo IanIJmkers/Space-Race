@@ -23,7 +23,6 @@ class Game {
       this.livesElement = document.getElementById ('lives');
       this.gameIsOver = false;
       this.animationId = null;
-      this.gameIsWon = false;
     }
 
     start () {
@@ -43,7 +42,7 @@ class Game {
     
         this.update ();
 
-        if (this.player.top <= 750) {
+        if (this.player.top <= 60) {
             this.score++;
             this.scoreElement.textContent = this.score;
             this.player.element.remove();           
@@ -97,10 +96,6 @@ class Game {
             }
         }
 
-        if (this.score == 20) {
-            this.gameWin();
-        }
-
         if (this.lives === 0) {
             this.gameOver();
         }
@@ -130,18 +125,6 @@ class Game {
         this.scoreElement2.innerText = this.score;
         
     }
-
-    gameWin() {
-        this.player.element.remove();
-
-
-        this.gameScreen.style.display = "none";
-        this.gameEndScreen.style.display = "block";
-       
-        this.scoreElement2.innerText = this.score;
-        
-    }
-
     
     resetGame () {
         this.player = new Player (
